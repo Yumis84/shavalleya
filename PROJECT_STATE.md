@@ -23,7 +23,9 @@ Next.js 16 / TypeScript / Tailwind / Supabase / Telegram Bot Edge Functions.
 - 13 menu categories and 37 confirmed products/prices are loaded. Ambiguous drinks are intentionally excluded.
 - Legacy OrderKing routes/schema/runtime dependencies have been removed.
 - Production migration ledger and a replayable schema baseline are recorded under `supabase/` and `docs/`.
-- Vercel project `shavalleya` is connected to the private GitHub repository. Production domain target: `shavalleya.ru`. A main-branch push is being used to trigger the first production deployment.
+- Vercel project `shavalleya` is connected to the private GitHub repository. Production domain target: `shavalleya.ru`.
+- First Vercel build failed because Next.js type checking included Deno Supabase Edge Functions with `jsr:` imports; commit `06191b1` narrowed TypeScript inputs and excluded `supabase/functions`. The subsequent production build succeeded.
+- Production Vercel environment variables were added after that deployment. This state update intentionally triggers a fresh production build so the browser bundle receives the current Supabase public configuration.
 
 ## Template invariants
 - Never expose service-role or Telegram bot secrets to browser code.
@@ -34,7 +36,7 @@ Next.js 16 / TypeScript / Tailwind / Supabase / Telegram Bot Edge Functions.
 - Advance-order scheduling/pinning is an extension; ordinary current orders are never pinned.
 
 ## Next acceptance gate
-1. Build/deploy the cleaned frontend.
+1. Verify the fresh Vercel production build loads the live Supabase menu.
 2. Place one real order through the public UI.
 3. Verify DB order + status history + Telegram card.
 4. Run Telegram lifecycle through accepted → preparing → ready → completed and verify customer polling.
