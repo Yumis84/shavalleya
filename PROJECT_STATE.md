@@ -23,6 +23,7 @@ Next.js 16 / TypeScript / Tailwind / Supabase / Telegram Bot Edge Functions.
 - 13 menu categories and 37 confirmed products/prices are loaded. Ambiguous drinks are intentionally excluded.
 - Legacy OrderKing routes/schema/runtime dependencies have been removed.
 - Production migration ledger and a replayable schema baseline are recorded under `supabase/` and `docs/`.
+- Vercel project `shavalleya` is connected to the private GitHub repository. Production domain target: `shavalleya.ru`. A main-branch push is being used to trigger the first production deployment.
 
 ## Template invariants
 - Never expose service-role or Telegram bot secrets to browser code.
