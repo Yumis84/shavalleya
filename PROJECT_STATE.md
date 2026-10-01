@@ -21,4 +21,4 @@ Next.js 16 / TypeScript / Tailwind / Supabase. OrderKing MIT used only as protot
 - Root route now opens /menu/kashtanovaya-73a.
 - New Russian guest mobile ordering page created against the Shavalleya schema.
 - Supabase client migrated to publishable-key env naming.
-- Next: import exact products/prices/compositions from source menu, add modifier UX, staff Telegram flow, then deployment/QR acceptance test.
+- 37 confirmed products/prices imported; ambiguous drinks intentionally excluded.\n- Server now enforces modifier min/max rules and exposes service-role-only staff_set_order_status for Telegram/KDS.\n- Next: exact compositions/modifier mapping, Telegram webhook UI, deployment/QR acceptance test.
