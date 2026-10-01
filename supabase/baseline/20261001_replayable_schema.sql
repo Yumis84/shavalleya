@@ -65,7 +65,7 @@ begin
  return jsonb_build_object('order_id',v_order_id,'order_number',v_order_number,'public_token',v_token,'status','pending','total',v_total);
 end $;
 revoke all on function public.place_order(uuid,jsonb,text,text,text) from public;
-grant execute on function public.place_order(uuid,jsonb,text,text,text) to anon,authenticated,service_role;
+grant execute on function public.place_order(uuid,jsonb,text,text,text) to anon,authenticated;
 
 create or replace function public.get_order_status(p_token uuid) returns jsonb language sql security definer set search_path='public' as $$select jsonb_build_object('order_number',o.order_number,'status',o.status,'total',o.total,'created_at',o.created_at,'updated_at',o.updated_at) from orders o where o.public_token=p_token$$;
 
@@ -73,4 +73,5 @@ create or replace function public.staff_set_order_status(p_order_id uuid,p_statu
 
 revoke all on function public.staff_set_order_status(uuid,text) from public,anon,authenticated;
 grant execute on function public.staff_set_order_status(uuid,text) to service_role;
+revoke all on function public.get_order_status(uuid) from public;
 grant execute on function public.get_order_status(uuid) to anon,authenticated;
