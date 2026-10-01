@@ -1,23 +1,24 @@
 # SHAVALLEYA — Project State
 
 ## MVP
-QR → guest mobile web menu → modifiers → cart → order → Supabase → staff notification/status → customer status.
-No customer registration. Payment at pickup initially.
+QR → guest mobile web menu → cart → order → Supabase → staff notification/status → customer status. No customer registration. Payment at pickup initially.
 
 ## Pilot
 Шаваллея, Калининград, ул. Каштановая Аллея, 73а.
 
 ## Stack
-Next.js 16 / TypeScript / Tailwind / Supabase.
-Imported OrderKing (MIT) as prototype baseline; MIT license retained.
+Next.js 16 / TypeScript / Tailwind / Supabase. OrderKing MIT used only as prototype baseline; license retained.
 
 ## Current state — 2026-10-01
-- OrderKing source baseline imported into private Yumis84/shavalleya.
-- Dedicated Supabase project connected: bspktoshbiyhfpmulfek.
-- Secure Shavalleya schema applied; original OrderKing schema was NOT applied.
+- Private repo populated from OrderKing baseline.
+- Dedicated Supabase project: bspktoshbiyhfpmulfek.
+- Secure Shavalleya schema + hardening migrations applied.
+- RLS enabled on all application tables; direct anonymous order-table writes blocked.
+- Guest place_order RPC recalculates prices from canonical products/modifiers.
+- Token-scoped get_order_status supports customer polling.
 - Pilot location seeded.
-- Guest direct table writes are blocked by RLS.
-- place_order RPC validates product availability and recalculates canonical prices.
-- Public order status is token-scoped.
-- Menu/categories/products/modifiers are ready for data import.
-- Next: adapt frontend to new schema/Russian UX, import real menu, then Telegram staff workflow and deployment.
+- Real menu categories seeded (13 categories); products/prices not invented and remain pending source extraction.
+- Root route now opens /menu/kashtanovaya-73a.
+- New Russian guest mobile ordering page created against the Shavalleya schema.
+- Supabase client migrated to publishable-key env naming.
+- Next: import exact products/prices/compositions from source menu, add modifier UX, staff Telegram flow, then deployment/QR acceptance test.
