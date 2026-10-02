@@ -1,13 +1,12 @@
 import type { NextConfig } from "next";
 
-const isGitHubPages = process.env.GITHUB_ACTIONS === "true";
-const repo = "shavalleya";
+const deploymentMode = process.env.PAGES_DEPLOYMENT_MODE || "github-pages";
 
 const nextConfig: NextConfig = {
-  output: isGitHubPages ? "export" : undefined,
-  trailingSlash: isGitHubPages,
-  basePath: isGitHubPages ? `/${repo}` : "",
-  assetPrefix: isGitHubPages ? `/${repo}/` : undefined,
+  output: deploymentMode !== "development" ? "export" : undefined,
+  trailingSlash: true,
+  basePath: deploymentMode === "custom-domain" ? "" : "/shavalleya",
+  assetPrefix: deploymentMode === "custom-domain" ? undefined : "/shavalleya/",
   images: { unoptimized: true },
 };
 
