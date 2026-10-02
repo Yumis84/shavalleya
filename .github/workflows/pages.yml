@@ -1,4 +1,5 @@
 name: Deploy GitHub Pages
+# Custom domain removed; redeploy canonical github.io site
 
 on:
   push:
