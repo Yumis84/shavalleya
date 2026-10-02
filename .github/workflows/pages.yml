@@ -1,5 +1,4 @@
 name: Deploy GitHub Pages
-# Custom domain removed; redeploy canonical github.io site
 
 on:
   push:
@@ -28,6 +27,7 @@ jobs:
       - run: npm install
       - run: npm run build
         env:
+          PAGES_DEPLOYMENT_MODE: custom-domain
           NEXT_PUBLIC_SUPABASE_URL: https://bspktoshbiyhfpmulfek.supabase.co
           NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY }}
       - uses: actions/configure-pages@v5
