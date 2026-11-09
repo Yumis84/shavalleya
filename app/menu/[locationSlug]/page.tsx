@@ -13,7 +13,6 @@ async function supabaseGet<T>(path:string):Promise<T>{
   if(!url||!key) throw new Error('Supabase build configuration is missing')
   const response=await fetch(`${url}/rest/v1/${path}`,{
     headers:{apikey:key,Authorization:`Bearer ${key}`},
-    cache:'no-store',
   })
   if(!response.ok) throw new Error(`Menu build request failed: ${response.status}`)
   return response.json() as Promise<T>
