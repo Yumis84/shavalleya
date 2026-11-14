@@ -5,7 +5,7 @@ import type { Category, Location, PlacedOrder, Product } from '@/lib/types'
 type CartItem={product:Product;quantity:number}
 const ACTIVE_ORDER_KEY='shavalleya:active-order:v1'
 const STATUS_LABELS:Record<string,string>={pending:'Ожидает подтверждения',accepted:'Заказ принят',preparing:'Готовится',ready:'Можно забирать',completed:'Выдан',rejected:'Заказ отклонён',cancelled:'Отменён'}
-const PUSH_PUBLIC_KEY=process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY||''
+const PUSH_PUBLIC_KEY='BOQzdlkJFHkETbCj68sU508-8nC4hZt_klmeitKnmnFp_G0qQ0r1ZnvOFBUyLbDlwjy9Qyav_VZRuDBe72WoF_o'
 const toUint8=(s:string)=>{const p='='.repeat((4-s.length%4)%4),b=(s+p).replace(/-/g,'+').replace(/_/g,'/'),r=atob(b),a=new Uint8Array(r.length);for(let i=0;i<r.length;i++)a[i]=r.charCodeAt(i);return a}
 const rub=(n:number)=>new Intl.NumberFormat('ru-RU',{style:'currency',currency:'RUB',maximumFractionDigits:0}).format(n)
 export default function MenuClient({initialLocation,initialCategories,initialProducts}:{initialLocation:Location;initialCategories:Category[];initialProducts:Product[]}){
